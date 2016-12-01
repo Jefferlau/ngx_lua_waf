@@ -74,6 +74,15 @@ function say_html()
     end
 end
 
+function say_json()
+    if Redirect then
+        ngx.header.content_type = "application/json"
+        ngx.status = ngx.HTTP_FORBIDDEN
+        ngx.say(jsonBody)
+        ngx.exit(ngx.status)
+    end
+end
+
 function whiteurl()
     if WhiteCheck then
         if wturlrules ~=nil then
@@ -191,7 +200,8 @@ function denycc()
         local req,_=limit:get(token)
         if req then
             if req > CCcount then
-                 ngx.exit(503)
+                -- ngx.exit(503)
+                say_json()
                 return true
             else
                  limit:incr(token,1)
