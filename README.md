@@ -22,6 +22,7 @@ ngx_lua_waf是我刚入职趣游时候开发的一个基于ngx_lua的web应用�
 
 ngx_lua如果是0.9.2以上版本，建议正则过滤函数改为ngx.re.find，匹配效率会提高三倍左右。
 
+参考： https://github.com/openresty/lua-nginx-module
 
 ###使用说明：
 
